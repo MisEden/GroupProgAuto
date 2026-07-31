@@ -1,0 +1,357 @@
+[
+  {
+    "srcFid": "roleId",
+    "label": "職務性質",
+    "filter": "[name=\"roleId\"]"
+  },
+  {
+    "srcFid": "jobName",
+    "label": "職務名稱",
+    "filter": "[name=\"jobName\"]"
+  },
+  {
+    "srcFid": "minimum",
+    "label": "需求人數",
+    "filter": "[name=\"minimum\"]"
+  },
+  {
+    "srcFid": "maximum",
+    "label": "需求人數",
+    "filter": "[name=\"maximum\"]"
+  },
+  {
+    "srcFid": "unlimit",
+    "label": "需求人數",
+    "filter": "[name=\"unlimit\"]"
+  },
+  {
+    "srcFid": "jobcat",
+    "label": "職類",
+    "filter": "[name=\"jobcat\"]"
+  },
+  {
+    "srcFid": "description",
+    "label": "職務說明",
+    "filter": "[name=\"description\"]"
+  },
+  {
+    "srcFid": "salaryType",
+    "label": "工作待遇-薪資種類",
+    "filter": "[name=\"salaryType\"]"
+  },
+  {
+    "srcFid": "salaryLow",
+    "label": "工作待遇-最低薪資",
+    "filter": "[name=\"salaryLow\"]"
+  },
+  {
+    "srcFid": "salaryHigh",
+    "label": "工作待遇-最高薪資",
+    "filter": "[name=\"salaryHigh\"]"
+  },
+  {
+    "srcFid": "salaryIsAbove",
+    "label": "工作待遇-以上",
+    "filter": "[name=\"salaryIsAbove\"]"
+  },
+  {
+    "srcFid": "addrNo",
+    "label": "上班地點-區域",
+    "filter": "[name=\"addrNo\"]"
+  },
+  {
+    "srcFid": "address",
+    "label": "上班地點-地址",
+    "filter": "[name=\"address\"]"
+  },
+  {
+    "srcFid": "calcRemoteWork",
+    "label": "遠端工作-是否提供",
+    "filter": "[name=\"calcRemoteWork\"]"
+  },
+  {
+    "srcFid": "remoteWorkOption",
+    "label": "遠端工作-完全遠端",
+    "filter": "[name=\"remoteWorkOption\"]"
+  },
+  {
+    "srcFid": "freeKeyRemoteDescription",
+    "label": "遠端工作-說明",
+    "filter": "[name=\"freeKeyRemoteDescription\"]"
+  },
+  {
+    "srcFid": "industoryArea",
+    "label": "工業區",
+    "filter": "[name=\"industoryArea\"]"
+  },
+  {
+    "srcFid": "manage",
+    "label": "管理責任",
+    "filter": "[name=\"manage\"]"
+  },
+  {
+    "srcFid": "businessTrip",
+    "label": "出差外派-需出差",
+    "filter": "[name=\"businessTrip\"]"
+  },
+  {
+    "srcFid": "expatriate",
+    "label": "出差外派-需外派",
+    "filter": "[name=\"expatriate\"]"
+  },
+  {
+    "srcFid": "holiday",
+    "label": "休假制度",
+    "filter": "[name=\"holiday\"]"
+  },
+  {
+    "srcFid": "onboardDate",
+    "label": "可上班日",
+    "filter": "[name=\"onboardDate\"]"
+  },
+  {
+    "srcFid": "graduate",
+    "label": "歡迎身分-應屆畢業生",
+    "filter": "[name=\"graduate\"]"
+  },
+  {
+    "srcFid": "daySchoolStudent",
+    "label": "歡迎身分-日間就讀中",
+    "filter": "[name=\"daySchoolStudent\"]"
+  },
+  {
+    "srcFid": "nightSchoolStudent",
+    "label": "歡迎身分-夜間就讀中",
+    "filter": "[name=\"nightSchoolStudent\"]"
+  },
+  {
+    "srcFid": "RDSS",
+    "label": "歡迎身分-研發替代",
+    "filter": "[name=\"RDSS\"]"
+  },
+  {
+    "srcFid": "diaspora",
+    "label": "歡迎身分-僑生",
+    "filter": "[name=\"diaspora\"]"
+  },
+  {
+    "srcFid": "foreigner-外籍人士",
+    "label": "歡迎身分",
+    "filter": "[name=\"foreigner\"]"
+  },
+  {
+    "srcFid": "indigenous",
+    "label": "歡迎身分-原住民",
+    "filter": "[name=\"indigenous\"]"
+  },
+  {
+    "srcFid": "newImmigrants",
+    "label": "歡迎身分-新住民",
+    "filter": "[name=\"newImmigrants\"]"
+  },
+  {
+    "srcFid": "reEnterWorkforce",
+    "label": "歡迎身分-二度就業",
+    "filter": "[name=\"reEnterWorkforce\"]"
+  },
+  {
+    "srcFid": "middleAged",
+    "label": "歡迎身分-中壯齡",
+    "filter": "[name=\"middleAged\"]"
+  },
+  {
+    "srcFid": "middleOldAge",
+    "label": "歡迎身分-中高齡",
+    "filter": "[name=\"middleOldAge\"]"
+  },
+  {
+    "srcFid": "advancedAge",
+    "label": "歡迎身分-高齡",
+    "filter": "[name=\"advancedAge\"]"
+  },
+  {
+    "srcFid": "rehabilitated",
+    "label": "歡迎身分-更生人",
+    "filter": "[name=\"rehabilitated\"]"
+  },
+  {
+    "srcFid": "intern",
+    "label": "歡迎身分-學生實習",
+    "filter": "[name=\"intern\"]"
+  },
+  {
+    "srcFid": "disablesType",
+    "label": "身障類別-種類",
+    "filter": "[name=\"disablesType\"]"
+  },
+  {
+    "srcFid": "disablesDegree",
+    "label": "身障類別-程度",
+    "filter": "[name=\"disablesDegree\"]"
+  },
+  {
+    "srcFid": "proof",
+    "label": "身障類別-需有身心障礙證明",
+    "filter": "[name=\"proof\"]"
+  },
+  {
+    "srcFid": "experience",
+    "label": "工作經驗",
+    "filter": "[name=\"experience\"]"
+  },
+  {
+    "srcFid": "belowHighSchool",
+    "label": "學歷要求-高中以下",
+    "filter": "[name=\"belowHighSchool\"]"
+  },
+  {
+    "srcFid": "highSchool",
+    "label": "學歷要求-高中",
+    "filter": "[name=\"highSchool\"]"
+  },
+  {
+    "srcFid": "juniorCollege",
+    "label": "學歷要求-專科",
+    "filter": "[name=\"juniorCollege\"]"
+  },
+  {
+    "srcFid": "bachelor",
+    "label": "學歷要求-大學",
+    "filter": "[name=\"bachelor\"]"
+  },
+  {
+    "srcFid": "master",
+    "label": "學歷要求-碩士",
+    "filter": "[name=\"master\"]"
+  },
+  {
+    "srcFid": "doctor-博士",
+    "label": "學歷要求",
+    "filter": "[name=\"doctor\"]"
+  },
+  {
+    "srcFid": "majors",
+    "label": "科系要求",
+    "filter": "[name=\"majors\"]"
+  },
+  {
+    "srcFid": "tools",
+    "label": "擅長工具",
+    "filter": "[name=\"tools\"]"
+  },
+  {
+    "srcFid": "skills",
+    "label": "工作技能",
+    "filter": "[name=\"skills\"]"
+  },
+  {
+    "srcFid": "licenses",
+    "label": "證照",
+    "filter": "[name=\"licenses\"]"
+  },
+  {
+    "srcFid": "otherCondition",
+    "label": "其他條件",
+    "filter": "[name=\"otherCondition\"]"
+  },
+  {
+    "srcFid": "departments",
+    "label": "部門",
+    "filter": "#departments"
+  },
+  {
+    "srcFid": "contacter",
+    "label": "職務聯絡人",
+    "filter": "[name='contacter']"
+  },
+  {
+    "srcFid": "emails",
+    "label": "職務E-mail",
+    "filter": "#emails"
+  },
+  {
+    "srcFid": "replyDays",
+    "label": "應徵回覆",
+    "filter": "[name='replyDays']"
+  },
+  {
+    "srcFid": "noReply",
+    "label": "合適者通知",
+    "filter": "[name='noReply']"
+  },
+  {
+    "srcFid": "through104",
+    "label": "透過104投履歷",
+    "filter": "[name='through104']"
+  },
+  {
+    "srcFid": "receiveResumeEmail",
+    "label": "收應徵履歷E-mail",
+    "filter": "[name='receiveResumeEmail']"
+  },
+  {
+    "srcFid": "importVipResume",
+    "label": "匯入VIP應徵履歷",
+    "filter": "[name='importVipResume']"
+  },
+  {
+    "srcFid": "call",
+    "label": "電洽",
+    "filter": "#call"
+  },
+  {
+    "srcFid": "phoneArea",
+    "label": "電洽區號",
+    "filter": "[name='phoneArea']"
+  },
+  {
+    "srcFid": "phone",
+    "label": "電洽電話",
+    "filter": "[name='phone']"
+  },
+  {
+    "srcFid": "ext",
+    "label": "電洽分機",
+    "filter": "[name='ext']"
+  },
+  {
+    "srcFid": "cellphone",
+    "label": "電洽手機",
+    "filter": "[name='cellphone']"
+  },
+  {
+    "srcFid": "personally",
+    "label": "親洽",
+    "filter": "#personally"
+  },
+  {
+    "srcFid": "applyAddrNo",
+    "label": "親洽地址編號",
+    "filter": "#applyAddrNo"
+  },
+  {
+    "srcFid": "applyAddr",
+    "label": "親洽地址",
+    "filter": "[name='applyAddr']"
+  },
+  {
+    "srcFid": "otherChannel",
+    "label": "其他應徵方式",
+    "filter": "#otherChannel"
+  },
+  {
+    "srcFid": "note",
+    "label": "其他應徵方式-備註",
+    "filter": "[name='note']"
+  },
+  {
+    "srcFid": "autoclose",
+    "label": "職務關閉",
+    "filter": "[name='autoclose']"
+  },
+  {
+    "srcFid": "subscript",
+    "label": "訂閱配對",
+    "filter": "[name='subscript']"
+  }
+]

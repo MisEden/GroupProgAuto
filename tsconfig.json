@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "types": ["node"],
+    "paths": {
+      "@DbAdm/*": ["zz_pages/DbAdm/*"],
+      "@base/*": ["tsBase/*"],
+      "@hire/*": ["src/Hire/*"]
+    }
+  }
+}

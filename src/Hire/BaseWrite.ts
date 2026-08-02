@@ -1,9 +1,10 @@
-import axios from 'axios';
 import { Locator, Page } from '@playwright/test';
 import _Config from '@base/svc/_Config';
 import _Input from '@base/svc/_Input';
 import _Ajax from '@base/svc/_Ajax';
 import _Json from '@base/svc/_Json';
+import _Array from '@base/svc/_Array';
+import _Log from '@base/svc/_Log';
 
 /**
  * 將 GroupProg 的求職資料逐筆寫入 104，成功後才回寫 GroupProg。
@@ -23,8 +24,8 @@ export default abstract class BaseWrite {
 
     //抽象方法，子類別必須實作
     abstract fnInit(): void;
-    abstract fnWhenFillRowA(jobName:string): Promise<void>;
-    abstract fnAfterFillRowA(id:string): Promise<void>;
+    abstract fnToEditFormA(jobName:string): Promise<boolean>;
+    abstract fnClickSaveA(): Promise<boolean>;
 
     constructor(compCode: string, apiUrl:string, page: Page, siteUrl:string) {
         this.compCode = compCode;
@@ -41,35 +42,55 @@ export default abstract class BaseWrite {
         this.fnInit();
         this.mapJsons = await _Json.readFileA(`src/Map${this.compCode}.json`) as Json[];
 
-        //set variables
-        //this.page = page;
-        //this._form = page.locator(ftForm);
-        //this._mapJsons = mapJsons;
-
         //goto siteUrl(已事先登入)
         await this.page.goto(this.siteUrl);
 
         //rows loop
         let okLen = 0;
-        let allMapFids:string[] = [];
-        let allUiFids:string[] = [];
+        let errors:string[] = [];
         for (const row of rows) {
-            await this.fnAfterFillRowA(row.jobName);
+            //1.trigger fnWhenFillRowA
+            if (!await this.fnToEditFormA(row.jobName)){
+                errors.push(`fnToEditFormA failed: ${row.jobName}`);
+                continue;
+            }
 
-            // 任一必填欄位無法寫入時，略過整筆，不進行儲存或 API 回寫。
+            //fill row
             let mapFids:string[] = [];
             let uiFids:string[] = [];
             if (await this.fillRowA(row, mapFids, uiFids)){
-                await this.fnAfterFillRowA(row.Id);
+                //2.trigger fnAfterFillRowA
+                if (!await this.fnClickSaveA()){
+                    errors.push(`fnClickSaveA failed: ${row.jobName}`);
+                    continue;
+                }
+
+                //update groupProg DB
+                if (!await this.updateDbA(row.Id)){
+                    errors.push(`updateDbA failed: ${row.jobName}`);
+                    continue;
+                }
             } else {
-                //has error
-                allMapFids.push(...mapFids);
-                allUiFids.push(...uiFids);
+                //3.任一必填欄位無法寫入時，略過整筆，不進行儲存或 API 回寫。
+                if (mapFids.length > 0)
+                    errors.push(`mapFid wrong: ${_Array.toStr(mapFids)}`);
+                if (uiFids.length > 0)
+                    errors.push(`uiFids wrong: ${_Array.toStr(uiFids)}`);
                 continue;
             }
         }
 
+        //write error report
+        if (errors.length > 0)
+            _Log.error(`${this.compCode} error: \n${_Array.toStr(errors, '\n')}`);
+            
         return okLen;
+    }
+
+    async updateDbA(id: string): Promise<boolean> {
+        //call API for update GroupProg(Id,CompType)
+        const data = { id: id, type: this.compCode };
+        return (await _Ajax.getStrA('/api/SetHire', false, data) == '1');
     }
 
     /*

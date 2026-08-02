@@ -1,5 +1,3 @@
-//import _Config from '@base/svc/_Config';
-//import _Input from '@base/svc/_Input';
 import _Ajax from '@base/svc/_Ajax';
 import BaseWrite from './BaseWrite';
 
@@ -15,18 +13,21 @@ export default class Write104 extends BaseWrite {
         //this.form = ;
     }
 
-    async fnWhenFillRowA(jobName:string){
+    async fnToEditFormA(jobName:string):Promise<boolean> {
         //檢查職務是否已經刋登
         //移動到修改職務url
         //移動到新增職務url
+        return true;
     }
 
-    async fnAfterFillRowA(id:string){
+    async fnClickSaveA():Promise<boolean> {
         //click save
 
-        //call API for update GroupProg(Id,CompType)
-        const data = { id: id, type: this.compCode };
-        const status = await _Ajax.getStrA('/api/SetHire', false, data);
+        //check save result 
+
+        return true;
+        //const data = { id: id, type: this.compCode };
+        //const status = await _Ajax.getStrA('/api/SetHire', false, data);
 
             /*
             try {

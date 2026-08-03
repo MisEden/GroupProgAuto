@@ -16,9 +16,11 @@ export default abstract class BaseWrite {
 
     compCode: string;
     page: Page;
-    apiUrl: string;
+    config: Json
+    //apiUrl: string;
+    //chromePath: string;
 
-    private siteUrl: string;
+    //private siteUrl: string;
     private form!: Locator;
     private mapJsons!: Json[];
 
@@ -27,11 +29,12 @@ export default abstract class BaseWrite {
     abstract fnToEditFormA(jobName:string): Promise<boolean>;
     abstract fnClickSaveA(): Promise<boolean>;
 
-    constructor(compCode: string, apiUrl:string, page: Page, siteUrl:string) {
+    constructor(compCode: string, page: Page, config: Json) {
         this.compCode = compCode;
         this.page = page;
-        this.apiUrl = apiUrl;
-        this.siteUrl = siteUrl;
+        this.config = config;
+        //this.apiUrl = apiUrl;
+        //this.chromePath = chromePath;
     }
 
     /**
@@ -40,10 +43,10 @@ export default abstract class BaseWrite {
     async writeA(rows: Json[]): Promise<number> {
 
         this.fnInit();
-        this.mapJsons = await _Json.readFileA(`src/Map${this.compCode}.json`) as Json[];
+        this.mapJsons = await _Json.readFileA(`src/Hire/Map${this.compCode}.json`) as Json[];
 
         //goto siteUrl(已事先登入)
-        await this.page.goto(this.siteUrl);
+        //await this.page.goto(this.siteUrl);
 
         //rows loop
         let okLen = 0;
@@ -78,6 +81,9 @@ export default abstract class BaseWrite {
                     errors.push(`uiFids wrong: ${_Array.toStr(uiFids)}`);
                 continue;
             }
+
+            //todo: temp add
+            await this.page.pause();
         }
 
         //write error report

@@ -1,0 +1,135 @@
+{
+  "cookies": [
+    {
+      "name": "__cf_bm",
+      "value": "pUfXJMrsgOLtcFlmRInmuR17BjgXD2QmNYXzVmwXb7M-1785743967.5619187-1.0.1.1-he0xmXntlDCtS4YlJN.3TRe8OSNtsKtEXY3S83dde6H1SF0MvNRYggRwQRNQcW8RMWyCNRlqgJJuydJHO8GEYuhYNMrTYjldqd.ilW4z6bbzbo_1srpqSVroYcx1jGsy",
+      "domain": ".bsignin.104.com.tw",
+      "path": "/",
+      "expires": 1785745768.034454,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "laravel_session",
+      "value": "bwiqixe1MOiFzfRAEIpKDPKv2eQBCeb7eALHTi5y",
+      "domain": ".bsignin.104.com.tw",
+      "path": "/",
+      "expires": 1785745817.070897,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ory_hydra_login_csrf_2579091631",
+      "value": "MTc4NTc0Mzk2N3x2ZjVoeXh5SXpiU1ZMS1hXc3FRSDUzbDVDUkxIeVViVWlyUFJWdjdvN3VzUUZ4c0VONHRZN2dvOGZWaHJVYWFpQzY5ZVljM09lNjlaXy04b1lVbE9uOUlxMDVMcUx1c1h6ZUU1MGtHSXhtSERDemVJdjgxWUZhYXBxYnJ4cFE9PXzZBaI-EsKy_IO8BWMvo_jRPGHkHf4pi1pDcW5Ee1TpBg==",
+      "domain": "boidc.104.com.tw",
+      "path": "/",
+      "expires": 1785745768.401851,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__cf_bm",
+      "value": "nUUkZiXwMlWGczMlb0Jpm0kB065bSyArvCMRy1csAfw-1785743967.9184005-1.0.1.1-rquXQ3KxjDv3e1XTIAcQggijz3ZKEez.YMS9V37kXAneM3gYor2dWe3g1nJIFLKoVnQRZtdTV8pp9h5SadSD29Vhtrvom1SSQM7CvOHZLa7AkXIFh8JSmarmKtOYDq4E",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1785745768.401942,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_gid",
+      "value": "GA1.3.1243017927.1785743968",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1785830369,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_cfuvid",
+      "value": "lB9xkUcljri97PprBCUUHX9pYMklbNIGwvsEaqj4hFI-1785743967.9570131-1.0.1.1-b.9I.VP_lwUtDcju5tsvF.bsaePIo1QMKxQImZCFPsc",
+      "domain": ".bsignin.104.com.tw",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_gcl_au",
+      "value": "1.1.1392787831.1785743969",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1793519968,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.3.2078745920.1785743968",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1820303969.117182,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_f",
+      "value": "eyJpdiI6IngzZEZub0lZU3hEaFdXeEc3aU1CNlE9PSIsInZhbHVlIjoiL0w1K2xFQW5OM3Jqd1hkL0llcEYrd2RlbnhBQ0tTMHo2VU1BOVQ0UFpCQjkyTm9vb25DNi9OSDNPMDMvZmQzVSIsIm1hYyI6IjQ1MmM1ZTAwNWU1MjU2ZWUyZTZlOGUzYjU3OGZiZDc1MWE4OWZiOWYxZGM4NzM4OTc2YWMzOWMyMjUwMTNhMWYiLCJ0YWciOiIifQ%3D%3D",
+      "domain": ".bsignin.104.com.tw",
+      "path": "/",
+      "expires": 1820304017.071143,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_FJWMQR9J2K",
+      "value": "GS2.1.s1785743968$o1$g1$t1785744018$j10$l0$h0",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1820304018.093873,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_W9X1GB1SVR",
+      "value": "GS2.1.s1785743968$o1$g1$t1785744018$j10$l0$h0",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1820304018.098821,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_EK43MBJWX0",
+      "value": "GS2.1.s1785743968$o1$g1$t1785744018$j10$l0$h0",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1820304018.103119,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://bsignin.104.com.tw",
+      "localStorage": [
+        {
+          "name": "_gcl_ls",
+          "value": "{\"schema\":\"gcl\",\"version\":1,\"gcl_ctr\":{\"value\":{\"value\":0,\"timeouts\":0,\"errors\":0,\"eopCount\":0,\"creationTimeMs\":1785743968560},\"expires\":1793519968560}}"
+        }
+      ]
+    }
+  ]
+}

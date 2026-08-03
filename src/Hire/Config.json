@@ -1,5 +1,6 @@
 {
     "apiUrl": "https://GroupProgTest.eden.org.tw/api/GetHires",
+    "chrome": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
     "url104": "https://vip.104.com.tw/job/jobinsert?act=new",
     "url1111": "https://GroupProgTest.eden.org.tw/api/GetHires",
     "urlSoc": "https://GroupProgTest.eden.org.tw/api/GetHires",

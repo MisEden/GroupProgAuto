@@ -18,6 +18,7 @@ test('CRUD查詢測試', async ({ page }) => {
     //const comps = ['104','1111','Soc','Tw'];
     //const compFts = ['.page-container','1111','Soc','Tw'];  //filter
 
+    debugger;
     //read config
     //const config = _Config.read<ConfigDto>('Hire.config.json');
     const config = _Json.readFileA(`src/Hire/Config.json`) as Json;

@@ -1,5 +1,6 @@
 import { chromium, Browser, BrowserContext } from 'playwright';
-import fs from 'fs';
+import { existsSync, mkdirSync } from 'fs';
+import { dirname, resolve } from 'path';
 
 
 //const authFile = './auth/user.json';
@@ -10,6 +11,10 @@ export default class _Browser {
     static async openChrome(chromePath:string, showChrome:boolean, authPath:string, loginUrl:string):
             Promise<{ browser: Browser, context: BrowserContext }> {
 
+        debugger;
+        // Keep the authentication file independent of the process working directory.
+        // `storageState({ path })` does not create its parent directory itself.
+        const authFile = resolve(authPath);
         const browser = await chromium.launch({
             executablePath: chromePath,
             headless: !showChrome,
@@ -17,10 +22,10 @@ export default class _Browser {
         });
 
         let context: BrowserContext;
-        if (fs.existsSync(authPath)) {
+        if (existsSync(authFile)) {
             //console.log('使用已有登入狀態');
             context = await browser.newContext({
-                storageState: authPath
+                storageState: authFile
             });
         } else {
             //console.log('第一次執行，需要人工登入');
@@ -28,18 +33,10 @@ export default class _Browser {
             const page = await context.newPage();
             await page.goto(loginUrl);
 
-            /*
-            console.log(`
-            =============================
-            請人工登入網站
-            登入完成後按 Resume
-            =============================
-            `);
-            */
-
             await page.pause();
+            mkdirSync(dirname(authFile), { recursive: true });
             await context.storageState({
-                path: authPath
+                path: authFile
             });
 
             //console.log('登入狀態已保存');

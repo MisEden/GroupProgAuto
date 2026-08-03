@@ -15,9 +15,11 @@ export default class Write104 extends BaseWrite {
     }
 
     async fnToEditFormA(jobName:string):Promise<boolean> {
+        debugger;
         const loginUrl = 'https://bsignin.104.com.tw/login';
-        const info = await _Browser.openChrome(this.config.chromePath, true, './auth/104.json', loginUrl);
-        this.page = info.context.pages()[0];
+        const info = await _Browser.openChrome(this.config.chrome, true, './auth/104.json', loginUrl);
+        //this.page = info.context.pages()[0];
+        this.page = await info.context.newPage();
 
         //檢查職務是否已經刋登
         const url = `https://vip.104.com.tw/job/allJobList?page=1&kws=${jobName}`;

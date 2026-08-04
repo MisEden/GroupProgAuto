@@ -17,7 +17,8 @@ export default class Write104 extends BaseWrite {
     async fnToEditFormA(jobName:string):Promise<boolean> {
         debugger;
         const loginUrl = 'https://bsignin.104.com.tw/login';
-        const info = await _Browser.openChrome(this.config.chrome, true, './auth/104.json', loginUrl);
+        const login2Url = 'https://vip.104.com.tw/rms/index';
+        const info = await _Browser.chromeLogin(this.config.chrome, './auth/104.json', loginUrl, login2Url);
         //this.page = info.context.pages()[0];
         this.page = await info.context.newPage();
 

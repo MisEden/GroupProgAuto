@@ -31,7 +31,7 @@ export default class _Fun {
 
     static init() {
         //加斜線??
-        this.dirRoot = process.cwd();
+        this.dirRoot = process.cwd() + '\\';
     }
 
 } //class

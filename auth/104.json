@@ -1,0 +1,215 @@
+{
+  "cookies": [
+    {
+      "name": "__cf_bm",
+      "value": "gE65xEgdOy.FO8SvrwrvwQboMiT_gFaFh3kSiHZzZoo-1785912145.1950028-1.0.1.1-RvMOK58jl3WsVoifMEjdqUAsjwPm.tclwHyHHUSthKTjQgL0sX4AjFiwI7y.XnexS_NLJrnbJhLf..eVQDqa7AJiGKCRtBDfbSa2y09kowJoqdahR5bcPXjIZqr6fDJy",
+      "domain": ".bsignin.104.com.tw",
+      "path": "/",
+      "expires": 1785913945.165457,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "laravel_session",
+      "value": "wQSmJ1kvrqC0LKfYjiEYXCWRMQ0uyk6pP9LGihv8",
+      "domain": ".bsignin.104.com.tw",
+      "path": "/",
+      "expires": 1785913970.134398,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ory_hydra_login_csrf_2579091631",
+      "value": "MTc4NTkxMjE0NXxXUjU2bmlBcC1jWGREVnJpdE44ZXpIdlVGNG50VVU5WjlMa2tmYkVpQ0NHRm40OGh3NW1fT1kxNGZLV2x2Zld5QWFZd3ZvMEdaTkFFN1JVQWRxeHlKWWdXbXdCMUo5VUN4LUhaTjN2ZWFGX3dUdnZpQzNiMHo4QjZwZmpsN1E9PXyeBhkOlXRKxxhD1gPmPnLA_1aeQrgXl-o5LQ53_1nJKQ==",
+      "domain": "boidc.104.com.tw",
+      "path": "/",
+      "expires": 1785913945.64447,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__cf_bm",
+      "value": "wZkRUr3UqV8NtfJSsV6XelwoznD8QA_x1mnV5z2P3O8-1785912145.651138-1.0.1.1-UJj2D0liNo0j1trH0MncqXHKJRciw4rWaSUB2LXge0O5IDPSfMK0agqTbe6OFvt22C6d0WqkQ2kw4Sn0Ues2MNP940GVvs0hFsXNOlg.t2Aaj.0k0zx.U5BE.60bJkLE",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1785913945.64456,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_cfuvid",
+      "value": "Cevx3Ssa9GgWf918oqL4qMYUHKp4pAPnmAiOi1QjFL0-1785912145.7008555-1.0.1.1-hthPLSJ6kFtY7ZUvx64hzMiS934hx6KYD877tFDUAQk",
+      "domain": ".bsignin.104.com.tw",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_gcl_au",
+      "value": "1.1.360867438.1785912146",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1793688145,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gid",
+      "value": "GA1.3.1492384195.1785912147",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1785998570,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gat_UA-15276226-11",
+      "value": "1",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1785912206,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gat_UA-56128201-1",
+      "value": "1",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1785912206,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AC_B",
+      "value": "W10",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1788504167.995518,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "EPKB",
+      "value": "b1e91067-f36d-4f3e-893e-d4dc5a4095c3",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1788504167.99559,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ACUD",
+      "value": "a6d99a22-09cd-40b9-8db8-1688e4c25ac7",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1820472168.995646,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ory_hydra_session",
+      "value": "MTc4NTkxMjE2OXx3TlFqNk1VNzMwREFiZEh5WklESjhMQ3dnT1Z6Y1Y2TXFXZ19JWkh1N3VsSXcwSlFfTE5jQ21aeFV0MHpITm00VzFaN2dsQUh4NWFaUkFuZkRJM2x1Ym1wZUxVMmQtM0dQWTRpVDhrRUl2dTVKOFIxQ3hkb082NXMwM1NNdDA4eXVBPT188MDOE_Tl5m89UyZfFUymJnGVSLoUi_1ONAGXYnJ7z3Y=",
+      "domain": "boidc.104.com.tw",
+      "path": "/",
+      "expires": 1788504169.045957,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ory_hydra_consent_csrf_2579091631",
+      "value": "MTc4NTkxMjE2OXxvWTJPaGNoYkgtNnVtZVNZb05zZGk0d1dURGtPSndZTDdCM1h1OXpKRWNRbVI2TVJ3Z3F1SGtWZ1ZFTFdNQnpUUFpjNlpFcFRLTHJ5Uk5fbnVTM1h2ZzdpT1JPLUo1a0psdHVHX3BxeFVrVUI4RWRnd3Z3d0ptNjV4NWVuZFE9PXzOAhmldzbl98geEmJJlrhFCN-Tb4VoG4rnof1k-KriDA==",
+      "domain": "boidc.104.com.tw",
+      "path": "/",
+      "expires": 1785913969.046033,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AC_B_S",
+      "value": "71MQtXjEIFk6QiAShr3LabHDKMKBhyZgBawFLrO8",
+      "domain": ".bsignin.104.com.tw",
+      "path": "/",
+      "expires": 1788504169.941068,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_FJWMQR9J2K",
+      "value": "GS2.1.s1785912145$o1$g1$t1785912170$j35$l0$h0",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1820472170.064751,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_W9X1GB1SVR",
+      "value": "GS2.1.s1785912145$o1$g1$t1785912170$j35$l0$h0",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1820472170.097224,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_EK43MBJWX0",
+      "value": "GS2.1.s1785912145$o1$g1$t1785912170$j35$l0$h0",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1820472170.13165,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_f",
+      "value": "eyJpdiI6Ik51VzZhQVRIVXF2dzhYTndwcW5jYmc9PSIsInZhbHVlIjoicXZqQjgxSlZsNWVibkdZcHVNcjQyVVgxM2xhbWZvOTBFYUV1ckkweFV3RUZJbE9jM0E5YzNJcFFiMkZaL2lBRCIsIm1hYyI6ImFiODBkMTMxNDMyNzIzNmI1YzM5NmM3MzMyNTFhZjNhZWI5YjQxOTM2ZjA0NGVjNGU1ZTRjNTJiNzE2ODUxNjMiLCJ0YWciOiIifQ%3D%3D",
+      "domain": ".bsignin.104.com.tw",
+      "path": "/",
+      "expires": 1820472170.134548,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.3.311861807.1785912146",
+      "domain": ".104.com.tw",
+      "path": "/",
+      "expires": 1820472170.156805,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://bsignin.104.com.tw",
+      "localStorage": [
+        {
+          "name": "_gcl_ls",
+          "value": "{\"schema\":\"gcl\",\"version\":1,\"gcl_ctr\":{\"value\":{\"value\":0,\"timeouts\":0,\"errors\":0,\"eopCount\":0,\"creationTimeMs\":1785912145782},\"expires\":1793688145782}}"
+        }
+      ]
+    }
+  ]
+}

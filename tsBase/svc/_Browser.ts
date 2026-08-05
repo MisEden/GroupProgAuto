@@ -1,13 +1,8 @@
 import { chromium, Browser, BrowserContext, Page } from 'playwright';
 import { existsSync, mkdirSync } from 'fs';
 import { dirname, resolve } from 'path';
+import _Time from './_Time';
 
-//import { chromium, Browser as PWBrowser, BrowserContext, Page } from 'playwright';
-import * as fs from 'fs';
-import * as readline from 'readline';
-
-
-//const authFile = './auth/user.json';
 
 
 export default class _Browser {
@@ -18,58 +13,70 @@ export default class _Browser {
     static page: Page | null = null;
     //private readonly statePath = 'playwright/.auth/state.json';
 
-    static async chromeLogin(chromePath:string, showChrome:boolean, authPath:string, 
-            loginUrl:string, login2Url:string): Promise<{ browser: Browser, context: BrowserContext }> {
-
-        //this.browser = await chromium.launch({ headless });                
-
-        /*
-        // 2. 設定環境內容 (判斷是否載入 Session)
-        if (fs.existsSync(authPath)) {
-            console.log('--- 偵測到已存在的登入狀態，正在載入... ---');
-            this.context = await this.browser.newContext({ storageState: authPath });
-        } else {
-            console.log('--- 建立全新瀏覽器環境 (未載入登入狀態) ---');
-            this.context = await this.browser.newContext();
-        }
-        */
+    //static async chromeLogin(chromePath:string, showChrome:boolean, authPath:string, 
+    static async chromeLogin(authPath:string, loginUrl:string): 
+            Promise<{page:Page, autoLogin:boolean}> {
+            //Promise<{ browser: Browser, context: BrowserContext }> {
 
         //debugger;
         // Keep the authentication file independent of the process working directory.
         // `storageState({ path })` does not create its parent directory itself.
         const authFile = resolve(authPath);
-        this.browser = await chromium.launch({
-            executablePath: chromePath,
-            headless: !showChrome,
+        const browser = await chromium.launch({
+            channel: 'chrome',
+            //executablePath: chromePath,
+            headless: false,
             slowMo: 100 // 開發時方便
         });
+        //await _Time.sleep(2);
 
-        let context: BrowserContext;
+        //let context: BrowserContext;
+        let context: BrowserContext | null = null;
+        let page: Page | null = null;
+        let autoLogin = false;
         if (existsSync(authFile)) {
-            //console.log('使用已有登入狀態');
-            this.context = await this.browser!.newContext({
-                storageState: authFile
-            });
+            context = await browser!.newContext({ storageState: authFile });
+            page = await context.newPage();
+            autoLogin = true;
         } else {
-            //console.log('第一次執行，需要人工登入');
-            this.context = await this.browser.newContext();
-            this.page = await this.context.newPage();
-            await this.page.goto(loginUrl);
+            context = await browser.newContext();
+            //加上這一段才能避免被偵測到是自動化程式 !!
+            await context.addInitScript(() => {
+                Object.defineProperty(navigator, 'webdriver', {
+                    get: () => undefined,
+                });
+            });
 
-            //check 是否登入成功
-            await this.page.waitForURL(login2Url);
+            page = await context.newPage();
+            //this.page = this.context.pages()[0] ?? await this.context.newPage();
+            await page.goto(loginUrl);
+            //await _Time.sleep(2);
+            
+            //todo: temp add
+            await page.locator('[name="email"]').fill('14700@eden.org.tw');
+            //await _Time.sleep(2);            
+            await page.locator('[name="password"]').fill('ede0home66');
+            //await _Time.sleep(2);
+            page.locator('[data-qa-id="loginButton"]').click();
+
+            //await this.page.pause();
 
             //await page.pause();
-            mkdirSync(dirname(authFile), { recursive: true });
-            await this.context.storageState({ path: authFile });
-
-            //console.log('登入狀態已保存');
+            //mkdirSync(dirname(authFile), { recursive: true });
+            await context.storageState({ path: authFile });
         }
-
-        return {
-            this.browser,
-            this.context
+        return { page, autoLogin };
+        /*{
+            //browser: this.browser,
+            browser: this.browser,
+            context: this.context
         };
+        */
+    }
+
+    //check url has text or not
+    static urlFind(page:Page, find:string): boolean {
+        return page.url().includes(find);
     }
 }
 

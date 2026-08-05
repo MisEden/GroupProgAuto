@@ -26,6 +26,7 @@ export default abstract class BaseWrite {
 
     //抽象方法，子類別必須實作
     abstract fnInit(): void;
+    abstract fnLoginA(): Promise<boolean>;
     abstract fnToEditFormA(jobName:string): Promise<boolean>;
     abstract fnClickSaveA(): Promise<boolean>;
 
@@ -42,7 +43,11 @@ export default abstract class BaseWrite {
      */
     async writeA(rows: Json[]): Promise<number> {
 
-        this.fnInit();
+        //this.fnInit();
+        //login
+        await this.fnLoginA();
+
+        //get mapJsons
         this.mapJsons = await _Json.readFileA(`src/Hire/Map${this.compCode}.json`) as Json[];
 
         //goto siteUrl(已事先登入)

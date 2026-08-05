@@ -4,12 +4,17 @@ import ConfigDto from '@hire/ConfigDto';
 import WriteComp from '@hire/BaseWrite';
 import _Json from '@base/svc/_Json';
 import Write104 from '@hire/Write104';
+import _Fun from '@base/svc/_Fun';
 
 /*
 test.use({
     storageState: 'auth/DbAdm.json'
 });
 */
+
+test.setTimeout(180_000); // 整個測試最多 3 分鐘
+
+_Fun.init();
 
 const project = 'Hire';
 test('CRUD查詢測試', async ({ page }) => {
@@ -18,7 +23,7 @@ test('CRUD查詢測試', async ({ page }) => {
     //const comps = ['104','1111','Soc','Tw'];
     //const compFts = ['.page-container','1111','Soc','Tw'];  //filter
 
-    debugger;
+    //debugger;
     //read config
     //const config = _Config.read<ConfigDto>('Hire.config.json');
     const config = _Json.readFileA(`src/Hire/Config.json`) as Json;

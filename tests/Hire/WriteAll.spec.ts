@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import _Config from '@base/svc/_Config';
-import ConfigDto from '@hire/ConfigDto';
-import WriteComp from '@hire/BaseWrite';
+//import ConfigDto from '@hire/ConfigDto';
+//import WriteComp from '@hire/BaseWrite';
 import _Json from '@base/svc/_Json';
 import Write104 from '@hire/Write104';
 import _Fun from '@base/svc/_Fun';
@@ -19,11 +19,6 @@ _Fun.init();
 const project = 'Hire';
 test('CRUD查詢測試', async ({ page }) => {
 
-    //要寫入的人資公司資料, 對應src/Mapxxx, 分別為104,1111,Soc(社工專協),Tw(台灣就業通)
-    //const comps = ['104','1111','Soc','Tw'];
-    //const compFts = ['.page-container','1111','Soc','Tw'];  //filter
-
-    //debugger;
     //read config
     //const config = _Config.read<ConfigDto>('Hire.config.json');
     const config = _Json.readFileA(`src/Hire/Config.json`) as Json;
@@ -32,7 +27,7 @@ test('CRUD查詢測試', async ({ page }) => {
     //#region 假資料
 const rows = [
   {
-    "roleId": "全職",
+    "roleId": "兼職",
     "jobName": "資深全端軟體工程師",
     "minimum": 1,
     "maximum": 3,
@@ -43,14 +38,14 @@ const rows = [
     "salaryLow": 70000,
     "salaryHigh": 100000,
     "salaryIsAbove": false,
-    "addrNo": "台北市內湖區",
-    "address": "瑞光路100號10樓",
+    "addrNo": "台北市大安區",
+    "address": "萬和街8號4樓",
     "calcRemoteWork": true,
     "remoteWorkOption": "部分遠端",
     "freeKeyRemoteDescription": "每週可遠端工作2天。",
     "industoryArea": "",
-    "manage": "不需負擔管理責任",
-    "businessTrip": false,
+    "manage": "4人以下",
+    "businessTrip": true,
     "expatriate": false,
     "holiday": "週休二日",
     "onboardDate": "一個月內",
@@ -59,7 +54,7 @@ const rows = [
     "nightSchoolStudent": false,
     "RDSS": true,
     "diaspora": true,
-    "foreigner-外籍人士": true,
+    "foreigner": true,
     "indigenous": true,
     "newImmigrants": true,
     "reEnterWorkforce": true,
@@ -68,16 +63,16 @@ const rows = [
     "advancedAge": false,
     "rehabilitated": false,
     "intern": false,
-    "disablesType": "",
-    "disablesDegree": "",
+    "disablesType": "自閉症",
+    "disablesDegree": "輕度",
     "proof": false,
-    "experience": "3年以上",
+    "experience": "1年以上",
     "belowHighSchool": false,
     "highSchool": false,
     "juniorCollege": false,
     "bachelor": true,
     "master": true,
-    "doctor-博士": false,
+    "doctor": false,
     "majors": "資訊工程、資訊管理、電機相關",
     "tools": "Git, Docker, Visual Studio, VS Code",
     "skills": "ASP.NET Core、C#、TypeScript、SQL、Playwright",
@@ -86,7 +81,7 @@ const rows = [
     "departments": "資訊管理處",
     "contacter": "王小明",
     "emails": "hr@example.com",
-    "replyDays": "7天內",
+    "replyDays": "3天",
     "noReply": true,
     "through104": true,
     "receiveResumeEmail": true,
@@ -101,8 +96,10 @@ const rows = [
     "applyAddr": "",
     "otherChannel": false,
     "note": "",
-    "autoclose": "30天",
-    "subscript": true
+    "autoclose": "自動關閉",
+    "subscript": "不收配對信"
+    /*
+    */
   }
 ];    
     //#endregion
@@ -112,14 +109,15 @@ const rows = [
 
     const rowLen = rows.length;
 
+    //要寫入的人資公司資料, 對應src/Mapxxx, 分別為104,1111,Soc(社工專協),Tw(台灣就業通)
     //write
     const apiUrl = config.apiUrl;
     //const siteUrl = config['url' + compCode];
     let okRow;
-    okRow = await new Write104('104', page, config).writeA(rows);
-    //okRow = await new Write1111('1111', config.url1111, page, apiUrl).writeA(rows);
-    //okRow = await new WriteSoc('Soc', config.urlSoc, page, apiUrl).writeA(rows);
-    //okRow = await new WriteTw('Tw', config.urlTw, page, apiUrl).writeA(rows);
+    okRow = await new Write104(0, '104', page, config).writeA(rows);
+    //okRow = await new Write1111(1, '1111', config.url1111, page, apiUrl).writeA(rows);
+    //okRow = await new WriteSoc(2, 'Soc', config.urlSoc, page, apiUrl).writeA(rows);
+    //okRow = await new WriteTw(3, 'Tw', config.urlTw, page, apiUrl).writeA(rows);
 
     //check
     expect(okRow == rowLen).toBeTruthy();

@@ -5,6 +5,8 @@ import _Ajax from '@base/svc/_Ajax';
 import _Json from '@base/svc/_Json';
 import _Array from '@base/svc/_Array';
 import _Log from '@base/svc/_Log';
+import MapDto from 'src/MapDto';
+import InputTypeEstr from '@base/enum/InputTypeEstr';
 
 /**
  * 將 GroupProg 的求職資料逐筆寫入 104，成功後才回寫 GroupProg。
@@ -14,23 +16,29 @@ import _Log from '@base/svc/_Log';
  */
 export default abstract class BaseWrite {
 
+    idx: number;
     compCode: string;
-    page: Page;
-    config: Json
+    page: Page|null;
+    config: Json;
     //apiUrl: string;
     //chromePath: string;
 
     //private siteUrl: string;
     private form!: Locator;
-    private mapJsons!: Json[];
+    private mapJsons!: MapDto[];
 
     //抽象方法，子類別必須實作
-    abstract fnInit(): void;
+    //abstract fnInit(): void;
     abstract fnLoginA(): Promise<boolean>;
+    abstract fnSetRadioA(box:Locator, fid:string, value: string): Promise<void>;
+    abstract fnSetCheckA(field:Locator, status:boolean): Promise<void>;
+    abstract fnSetSelectA(field:Locator, text:string): Promise<void>;
+    abstract fnSetCustomA(fid:string, field:Locator, text:string): Promise<void>;
     abstract fnToEditFormA(jobName:string): Promise<boolean>;
     abstract fnClickSaveA(): Promise<boolean>;
 
-    constructor(compCode: string, page: Page, config: Json) {
+    constructor(idx:number, compCode: string, page: Page, config: Json) {
+        this.idx = idx;
         this.compCode = compCode;
         this.page = page;
         this.config = config;
@@ -48,7 +56,7 @@ export default abstract class BaseWrite {
         await this.fnLoginA();
 
         //get mapJsons
-        this.mapJsons = await _Json.readFileA(`src/Hire/Map${this.compCode}.json`) as Json[];
+        this.mapJsons = await _Json.readFileA(`src/Hire/Map${this.compCode}.json`) as MapDto[];
 
         //goto siteUrl(已事先登入)
         //await this.page.goto(this.siteUrl);
@@ -64,31 +72,23 @@ export default abstract class BaseWrite {
             }
 
             //fill row
-            let mapFids:string[] = [];
-            let uiFids:string[] = [];
-            if (await this.fillRowA(row, mapFids, uiFids)){
-                //2.trigger fnAfterFillRowA
-                if (!await this.fnClickSaveA()){
-                    errors.push(`fnClickSaveA failed: ${row.jobName}`);
-                    continue;
-                }
+            //let errors:string[] = [];
+            await this.fillRowA(row, errors);
 
-                //update groupProg DB
-                if (!await this.updateDbA(row.Id)){
-                    errors.push(`updateDbA failed: ${row.jobName}`);
-                    continue;
-                }
-            } else {
-                //3.任一必填欄位無法寫入時，略過整筆，不進行儲存或 API 回寫。
-                if (mapFids.length > 0)
-                    errors.push(`mapFid wrong: ${_Array.toStr(mapFids)}`);
-                if (uiFids.length > 0)
-                    errors.push(`uiFids wrong: ${_Array.toStr(uiFids)}`);
+            //2.trigger fnAfterFillRowA
+            if (!await this.fnClickSaveA()){
+                errors.push(`fnClickSaveA failed: ${row.jobName}`);
+                continue;
+            }
+
+            //update groupProg DB
+            if (!await this.updateDbA(row.Id)){
+                errors.push(`updateDbA failed: ${row.jobName}`);
                 continue;
             }
 
             //todo: temp add
-            await this.page.pause();
+            //await this.page!.pause();
         }
 
         //write error report
@@ -131,36 +131,85 @@ export default abstract class BaseWrite {
     /**
      * 寫入一筆資料到網站
      * @param row 
-     * @param mapFids by ref
-     * @param uiFids by ref
+     * @param errors by ref
+     * @param uiErrFids by ref
      * @returns 
      */
-    private async fillRowA(row: Json, mapFids:string[], uiFids:string[]): Promise<boolean> {
+    private async fillRowA(row: Json, errors:string[]): Promise<boolean> {
         let box = this.form ?? this.page;
-        //let mapFids:string[] = [];
-        //let uiFids:string[] = [];
         let ok = true;
         for (const map of this.mapJsons) {
             //如果沒有 srcFid 則 skip
             const fid = map.srcFid;
             if (fid == null) continue;
 
-            if (fid in row){
+            //for debug
+            if (fid == 'calcRemoteWork'){
+                debugger;
+            }
+
+            if (fid.startsWith('_')){   
+                //底線開頭欄位不處理
+                continue;
+            } else if (!(fid in row)){
                 //如果row沒有此欄位則記錄fid
                 ok = false;
-                mapFids.push(fid);
-            } else if (row[fid] != null){   //row有欄位值才處理                
-                //如果找不到欄位則記錄fid
-                const field = box.locator(map.filter);
-                if (field == null){
-                    uiFids.push(fid);
-                    ok = false;
+                errors.push(`db no fid: ${fid}`);
+            } else if (row[fid] == null){   
+                //row有欄位值才處理
+                continue;
+            }
+
+            //如果找不到欄位則記錄fid
+            const field = box.locator(map.filter);
+            const fieldLen = await field.count();
+            if (fieldLen == 0){
+                errors.push(`ui no filter: ${map.filter}`);
+                ok = false;
+            } else if (await _Input.isHideA(field.first())) {
+                errors.push(`field hide: ${map.filter}`);
+                ok = false;
+            } else if (fieldLen > 1 && map.type != InputTypeEstr.Radio) {
+                errors.push(`filter many: ${map.filter}`);
+                ok = false;
+                /*
+            } else if (!(await field.first().isVisible()) && fid != 'businessTrip') {
+                errors.push(`field hide: ${map.filter}`);
+                ok = false;
+                */
+            } else {
+                //case ok
+                console.log(`fill ${fid}`);
+                if (map.type == InputTypeEstr.Radio){
+                    //const fid2 = '_' + fid;
+                    const label = this.getRadioLabel(row[fid]);
+                    await this.fnSetRadioA(box, fid, label);
+                } else if (map.type == InputTypeEstr.Check){
+                    const status = _Input.toBoolean(row[fid]);
+                    await this.fnSetCheckA(field, status);
+                } else if (map.type == InputTypeEstr.Select){
+                    await this.fnSetSelectA(field, row[fid]);
+                } else if (map.type == InputTypeEstr.Custom){
+                    await this.fnSetCustomA(fid, field, row[fid]);
                 } else {
-                    await _Input.setOA(field, row[fid]);
+                    try{
+                        //console.log(`fill ${fid}`);
+                        await _Input.setOA(field, row[fid]);
+                    } catch (err: any) {
+                        errors.push(`fill failed: ${err.message}`);
+                        ok = false;
+                    }
                 }
             }
         }
         return ok;
+    }
+
+    private getRadioLabel(ext:string): string {
+        if (ext == null || ext.trim() == '') return '';
+        const labels = ext.split(',');
+        if (this.idx >= labels.length) return '';
+        return labels[this.idx].trim();
     }
 
     /*

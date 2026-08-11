@@ -12,17 +12,19 @@ export default class _Input {
      */
     static async setA(fid: string, value: InputValue, box: Locator) {
         const obj = _Obj.get(fid, box);
-        this.setOA(obj, value);
+        await this.setOA(obj, value);
     }
 
     static async setOA(obj: Locator, value: InputValue) {
-        const info = await obj.evaluate(el => {
-            const input = el as HTMLInputElement;
-            const select = el as HTMLSelectElement;
+        await obj.fill(value == null ? '' : String(value), { force: true });
+        /*
+        const info = await obj.evaluate(elm => {
+            const input = elm as HTMLInputElement;
+            const select = elm as HTMLSelectElement;
             return {
-                tag: el.tagName,
-                type: el instanceof HTMLInputElement ? input.type.toLowerCase() : '',
-                multiple: el instanceof HTMLSelectElement && select.multiple,
+                tag: elm.tagName,
+                type: elm instanceof HTMLInputElement ? input.type.toLowerCase() : '',
+                multiple: elm instanceof HTMLSelectElement && select.multiple,
             };
         });
 
@@ -44,8 +46,10 @@ export default class _Input {
                 // Playwright 的 fill 也支援 contenteditable 元素。
                 await obj.fill(value == null ? '' : String(value));
         }
+        */
     }
 
+        /*
     private static async setInputA(obj: Locator, type: string, value: InputValue) {
         switch (type) {
             case 'checkbox':
@@ -83,8 +87,9 @@ export default class _Input {
                 await obj.fill(value == null ? '' : String(value));
         }
     }
+    */
 
-    private static toBoolean(value: InputValue): boolean {
+    static toBoolean(value: InputValue): boolean {
         if (typeof value === 'boolean')
             return value;
         if (value == null)
@@ -101,5 +106,9 @@ export default class _Input {
 
     static getByName(fid: string, box: Locator): Locator {
         return box.locator(`[name="${fid}"]`);
+    }
+
+    static async isHideA(field: Locator): Promise<boolean> {
+        return (await field.getAttribute('type') == 'hidden');
     }
 }

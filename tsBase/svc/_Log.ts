@@ -8,7 +8,7 @@ export default class _Log {
     private static folder = "_log";
 
     //log file name format
-    private static fileFormat = "yyyy-MM-dd";
+    //private static fileFormat = "yyyy-MM-dd";
 
     static async infoA(msg:string) {
         await this.logFileA(this.getFilePath("info"), msg);
@@ -23,7 +23,7 @@ export default class _Log {
     }
 
     private static getFilePath(type: string): string {
-        return `${this.getDir()}/${_Date.format(new Date(), this.fileFormat)}-${type}.txt`;
+        return `${this.getDir()}/${_Date.toDateStr(new Date())}-${type}.txt`;
     }    
 
     static async logFileA(path: string, msg: string) {

@@ -2,356 +2,402 @@
   {
     "srcFid": "roleId",
     "label": "職務性質",
-    "filter": "[name=\"roleId\"]"
+    "type": "radio",
+    "filter": "input[name='roleId']"
   },
   {
     "srcFid": "jobName",
     "label": "職務名稱",
-    "filter": "[name=\"jobName\"]"
+    "filter": "input[data-qa-id='jobName']"
   },
   {
     "srcFid": "minimum",
-    "label": "需求人數",
-    "filter": "[name=\"minimum\"]"
+    "label": "需求人數-最少",
+    "filter": "input[name='minimum']"
   },
   {
     "srcFid": "maximum",
-    "label": "需求人數",
-    "filter": "[name=\"maximum\"]"
+    "label": "需求人數-最多",
+    "filter": "input[name='maximum']"
   },
   {
     "srcFid": "unlimit",
-    "label": "需求人數",
-    "filter": "[name=\"unlimit\"]"
+    "label": "需求人數-不限",
+    "type": "check",
+    "filter": "input[name='unlimit']"
   },
   {
-    "srcFid": "jobcat",
+    "srcFid": "_jobcat_下拉2",
     "label": "職類",
-    "filter": "[name=\"jobcat\"]"
+    "filter": "a[name='jobcat']"
   },
   {
     "srcFid": "description",
     "label": "職務說明",
-    "filter": "[name=\"description\"]"
+    "filter": "textarea[name='description']"
   },
   {
     "srcFid": "salaryType",
     "label": "工作待遇-薪資種類",
-    "filter": "[name=\"salaryType\"]"
+    "type": "select",
+    "filter": "div.dropdown[name='salaryType']"
   },
   {
     "srcFid": "salaryLow",
     "label": "工作待遇-最低薪資",
-    "filter": "[name=\"salaryLow\"]"
+    "filter": "input[name='salaryLow']"
   },
   {
     "srcFid": "salaryHigh",
     "label": "工作待遇-最高薪資",
-    "filter": "[name=\"salaryHigh\"]"
+    "filter": "input[name='salaryHigh']"
   },
   {
     "srcFid": "salaryIsAbove",
     "label": "工作待遇-以上",
-    "filter": "[name=\"salaryIsAbove\"]"
+    "type": "check",
+    "filter": "input[name='salaryIsAbove']"
   },
   {
     "srcFid": "addrNo",
     "label": "上班地點-區域",
-    "filter": "[name=\"addrNo\"]"
+    "type": "custom",
+    "filter": "#addrNo .form-tag-selector"
   },
   {
     "srcFid": "address",
     "label": "上班地點-地址",
-    "filter": "[name=\"address\"]"
+    "filter": "input[name='address']"
   },
   {
     "srcFid": "calcRemoteWork",
     "label": "遠端工作-是否提供",
-    "filter": "[name=\"calcRemoteWork\"]"
+    "type": "check",
+    "filter": "input[name='calcRemoteWork']"
   },
   {
     "srcFid": "remoteWorkOption",
     "label": "遠端工作-完全遠端",
-    "filter": "[name=\"remoteWorkOption\"]"
+    "type": "radio",
+    "filter": "input[name='remoteWorkOption']"
   },
   {
     "srcFid": "freeKeyRemoteDescription",
     "label": "遠端工作-說明",
-    "filter": "[name=\"freeKeyRemoteDescription\"]"
+    "filter": "input[name='freeKeyRemoteDescription']"
   },
   {
-    "srcFid": "industoryArea",
+    "srcFid": "_industoryArea_下拉2_不填",
     "label": "工業區",
-    "filter": "[name=\"industoryArea\"]"
+    "filter": "#industoryArea"
   },
   {
     "srcFid": "manage",
     "label": "管理責任",
-    "filter": "[name=\"manage\"]"
+    "type": "radio",
+    "filter": "input[name='manage']"
   },
   {
     "srcFid": "businessTrip",
     "label": "出差外派-需出差",
-    "filter": "[name=\"businessTrip\"]"
+    "type": "check",
+    "filter": "input[name='businessTrip']"
   },
   {
     "srcFid": "expatriate",
     "label": "出差外派-需外派",
-    "filter": "[name=\"expatriate\"]"
+    "type": "check",
+    "filter": "input[name='expatriate']"
   },
   {
     "srcFid": "holiday",
     "label": "休假制度",
-    "filter": "[name=\"holiday\"]"
+    "type": "radio",
+    "filter": "input[name='holiday']"
   },
   {
     "srcFid": "onboardDate",
     "label": "可上班日",
-    "filter": "[name=\"onboardDate\"]"
+    "type": "radio",
+    "filter": "input[name='onboardDate']"
   },
   {
     "srcFid": "graduate",
+    "type": "check",
     "label": "歡迎身分-應屆畢業生",
-    "filter": "[name=\"graduate\"]"
+    "filter": "input[name='graduate']"
   },
   {
     "srcFid": "daySchoolStudent",
     "label": "歡迎身分-日間就讀中",
-    "filter": "[name=\"daySchoolStudent\"]"
+    "type": "check",
+    "filter": "input[name='daySchoolStudent']"
   },
   {
     "srcFid": "nightSchoolStudent",
     "label": "歡迎身分-夜間就讀中",
-    "filter": "[name=\"nightSchoolStudent\"]"
+    "type": "check",
+    "filter": "input[name='nightSchoolStudent']"
   },
   {
     "srcFid": "RDSS",
     "label": "歡迎身分-研發替代",
-    "filter": "[name=\"RDSS\"]"
+    "type": "check",
+    "filter": "input[name='RDSS']"
   },
   {
     "srcFid": "diaspora",
     "label": "歡迎身分-僑生",
-    "filter": "[name=\"diaspora\"]"
+    "type": "check",
+    "filter": "input[name='diaspora']"
   },
   {
-    "srcFid": "foreigner-外籍人士",
-    "label": "歡迎身分",
-    "filter": "[name=\"foreigner\"]"
+    "srcFid": "foreigner",
+    "label": "歡迎身分-外籍人士",
+    "type": "check",
+    "filter": "input[name='foreigner']"
   },
   {
     "srcFid": "indigenous",
     "label": "歡迎身分-原住民",
-    "filter": "[name=\"indigenous\"]"
+    "type": "check",
+    "filter": "input[name='indigenous']"
   },
   {
     "srcFid": "newImmigrants",
     "label": "歡迎身分-新住民",
-    "filter": "[name=\"newImmigrants\"]"
+    "type": "check",
+    "filter": "input[name='newImmigrants']"
   },
   {
     "srcFid": "reEnterWorkforce",
     "label": "歡迎身分-二度就業",
-    "filter": "[name=\"reEnterWorkforce\"]"
+    "type": "check",
+    "filter": "input[name='reEnterWorkforce']"
   },
   {
     "srcFid": "middleAged",
     "label": "歡迎身分-中壯齡",
-    "filter": "[name=\"middleAged\"]"
+    "type": "check",
+    "filter": "input[name='middleAged']"
   },
   {
     "srcFid": "middleOldAge",
     "label": "歡迎身分-中高齡",
-    "filter": "[name=\"middleOldAge\"]"
+    "type": "check",
+    "filter": "input[name='middleOldAge']"
   },
   {
     "srcFid": "advancedAge",
     "label": "歡迎身分-高齡",
-    "filter": "[name=\"advancedAge\"]"
+    "type": "check",
+    "filter": "input[name='advancedAge']"
   },
   {
     "srcFid": "rehabilitated",
     "label": "歡迎身分-更生人",
-    "filter": "[name=\"rehabilitated\"]"
+    "type": "check",
+    "filter": "input[name='rehabilitated']"
   },
   {
     "srcFid": "intern",
     "label": "歡迎身分-學生實習",
-    "filter": "[name=\"intern\"]"
+    "type": "check",
+    "filter": "input[name='intern']"
   },
   {
     "srcFid": "disablesType",
     "label": "身障類別-種類",
-    "filter": "[name=\"disablesType\"]"
+    "type": "select",
+    "filter": "div.dropdown[name='disablesType']"
   },
   {
     "srcFid": "disablesDegree",
     "label": "身障類別-程度",
-    "filter": "[name=\"disablesDegree\"]"
+    "type": "select",
+    "filter": "div.dropdown[name='disablesDegree']"
   },
   {
     "srcFid": "proof",
     "label": "身障類別-需有身心障礙證明",
-    "filter": "[name=\"proof\"]"
+    "type": "check",
+    "filter": "input[name='proof']"
   },
   {
     "srcFid": "experience",
     "label": "工作經驗",
-    "filter": "[name=\"experience\"]"
+    "type": "select",
+    "filter": "div.dropdown[name='experience']"
   },
   {
     "srcFid": "belowHighSchool",
     "label": "學歷要求-高中以下",
-    "filter": "[name=\"belowHighSchool\"]"
+    "type": "check",
+    "filter": "input[name='belowHighSchool']"
   },
   {
     "srcFid": "highSchool",
     "label": "學歷要求-高中",
-    "filter": "[name=\"highSchool\"]"
+    "type": "check",
+    "filter": "input[name='highSchool']"
   },
   {
     "srcFid": "juniorCollege",
     "label": "學歷要求-專科",
-    "filter": "[name=\"juniorCollege\"]"
+    "type": "check",
+    "filter": "input[name='juniorCollege']"
   },
   {
     "srcFid": "bachelor",
     "label": "學歷要求-大學",
-    "filter": "[name=\"bachelor\"]"
+    "type": "check",
+    "filter": "input[name='bachelor']"
   },
   {
     "srcFid": "master",
     "label": "學歷要求-碩士",
-    "filter": "[name=\"master\"]"
+    "type": "check",
+    "filter": "input[name='master']"
   },
   {
-    "srcFid": "doctor-博士",
-    "label": "學歷要求",
-    "filter": "[name=\"doctor\"]"
+    "srcFid": "doctor",
+    "label": "學歷要求-博士",
+    "type": "check",
+    "filter": "input[name='doctor']"
   },
   {
-    "srcFid": "majors",
+    "srcFid": "_majors_下拉2",
     "label": "科系要求",
-    "filter": "[name=\"majors\"]"
+    "filter": "a[name='majors']"
   },
   {
-    "srcFid": "tools",
+    "srcFid": "_tools_下拉2",
     "label": "擅長工具",
-    "filter": "[name=\"tools\"]"
+    "filter": "a[name='tools']"
   },
   {
-    "srcFid": "skills",
+    "srcFid": "_skills_下拉2",
     "label": "工作技能",
-    "filter": "[name=\"skills\"]"
+    "filter": "a[name='skills']"
   },
   {
-    "srcFid": "licenses",
+    "srcFid": "_licenses_下拉2",
     "label": "證照",
-    "filter": "[name=\"licenses\"]"
+    "filter": "a[name='licenses']"
   },
   {
     "srcFid": "otherCondition",
     "label": "其他條件",
-    "filter": "[name=\"otherCondition\"]"
+    "filter": "textarea[name='otherCondition']"
   },
   {
-    "srcFid": "departments",
+    "srcFid": "_departments_下拉2",
     "label": "部門",
     "filter": "#departments"
   },
   {
     "srcFid": "contacter",
     "label": "職務聯絡人",
-    "filter": "[name='contacter']"
+    "filter": "input[name='contacter']"
   },
   {
-    "srcFid": "emails",
+    "srcFid": "_emails_不填",
     "label": "職務E-mail",
     "filter": "#emails"
   },
   {
     "srcFid": "replyDays",
     "label": "應徵回覆",
-    "filter": "[name='replyDays']"
+    "type": "select",
+    "filter": "div.dropdown[name='replyDays']"
   },
   {
     "srcFid": "noReply",
     "label": "合適者通知",
-    "filter": "[name='noReply']"
+    "type": "check",
+    "filter": "input[name='noReply']"
   },
   {
     "srcFid": "through104",
     "label": "透過104投履歷",
-    "filter": "[name='through104']"
+    "type": "check",
+    "filter": "input[name='through104']"
   },
   {
     "srcFid": "receiveResumeEmail",
     "label": "收應徵履歷E-mail",
-    "filter": "[name='receiveResumeEmail']"
+    "type": "check",
+    "filter": "input[name='receiveResumeEmail']"
   },
   {
     "srcFid": "importVipResume",
     "label": "匯入VIP應徵履歷",
-    "filter": "[name='importVipResume']"
+    "type": "check",
+    "filter": "input[name='importVipResume']"
   },
   {
     "srcFid": "call",
     "label": "電洽",
-    "filter": "#call"
+    "type": "check",
+    "filter": "#call input[name='isChecked']"
   },
   {
     "srcFid": "phoneArea",
     "label": "電洽區號",
-    "filter": "[name='phoneArea']"
+    "filter": "input[name='phoneArea']"
   },
   {
     "srcFid": "phone",
     "label": "電洽電話",
-    "filter": "[name='phone']"
+    "filter": "input[name='phone']"
   },
   {
     "srcFid": "ext",
     "label": "電洽分機",
-    "filter": "[name='ext']"
+    "filter": "input[name='ext']"
   },
   {
     "srcFid": "cellphone",
     "label": "電洽手機",
-    "filter": "[name='cellphone']"
+    "filter": "input[name='cellphone']"
   },
   {
-    "srcFid": "personally",
+    "srcFid": "_personally_不填",
     "label": "親洽",
-    "filter": "#personally"
+    "type": "check",
+    "filter": "#personally input[name='isChecked']"
   },
   {
-    "srcFid": "applyAddrNo",
-    "label": "親洽地址編號",
+    "srcFid": "_applyAddrNo_下拉2_不填",
+    "label": "親洽-地址編號",
     "filter": "#applyAddrNo"
   },
   {
-    "srcFid": "applyAddr",
-    "label": "親洽地址",
-    "filter": "[name='applyAddr']"
+    "srcFid": "_applyAddr_不填",
+    "label": "親洽-地址",
+    "filter": "input[name='applyAddr']"
   },
   {
     "srcFid": "otherChannel",
     "label": "其他應徵方式",
-    "filter": "#otherChannel"
+    "type": "check",
+    "filter": "#otherChannel input[name='isChecked']"
   },
   {
     "srcFid": "note",
     "label": "其他應徵方式-備註",
-    "filter": "[name='note']"
+    "filter": "textarea[name='note']"
   },
   {
     "srcFid": "autoclose",
     "label": "職務關閉",
-    "filter": "[name='autoclose']"
+    "type": "select",
+    "filter": "div.dropdown[name='autoclose']"
   },
   {
     "srcFid": "subscript",
     "label": "訂閱配對",
-    "filter": "[name='subscript']"
+    "type": "select",
+    "filter": "div.dropdown[name='subscript']"
   }
 ]

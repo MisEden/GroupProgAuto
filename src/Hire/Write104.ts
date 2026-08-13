@@ -38,26 +38,18 @@ export default class Write104 extends BaseWrite {
     }
 
     //set radio checked
-    async fnSetRadioA(box: Locator, fid: string, label: string):Promise<void> {
-        //外層label, 內層input
-        //await box.locator(`label:has-text("${label}") input[name="${fid}"]`).check();
-        //const filter = `label:has-text("${label}") input[name="${fid}"]`;
-        const filter = `div[name="${fid}"]`;
-        await box.locator(filter)
-            .filter({hasText:label})
-            .click({ force: true });
-
-        /*
-        const filter = `label:has-text("${label}") input[name="${fid}"]`;
-        const field = box.locator(filter);
-        const fieldLen = await field.count();
-        const isSee = await field.first().isVisible();
-        await field.first().check();
-        */
+    async fnSetRadioA(field: Locator, label: string):Promise<void> {
+        const item = field.filter({ hasText: label });
+        //const len = await item.count();
+        //可能有動態效果, 等render完成!!
+        await item.waitFor({ state: 'attached' }); 
+        await item.click({ force: true });
     }    
 
     async fnSetCheckA(field:Locator, status:boolean): Promise<void> {
-        const len = await field.count();
+        //可能有動態效果, 等render完成!!
+        await field.waitFor({ state: 'attached' }); 
+        //const len = await field.count();
         if (status) {
             await field.check({ force: true });
         } else {
@@ -67,6 +59,7 @@ export default class Write104 extends BaseWrite {
 
     async fnSetSelectA(field:Locator, text:string): Promise<void>{
         //const field = page.locator('div.dropdown[name="autoclose"]');
+        await field.waitFor({ state: 'attached' }); 
         await field.locator('button.dropdown-toggle').click();
         await field.getByRole('menuitem', { name: text, exact: true }).click();        
     }
@@ -82,26 +75,24 @@ export default class Write104 extends BaseWrite {
         }
     }
 
+    //設定 "上班地點"
     private async setAddrNoA(field:Locator, value:string): Promise<void>{
+        await field.waitFor({ state: 'attached' }); 
         await field.click({ force: true });
 
         // 清除目前已選的項目
         const modal = this.page!.locator('.category-picker__modal-dialog');
         await modal.locator('button.remove-all-btn').click();
 
+        // 先展開縣市
+        const city = value.match(/^.+?[市縣]/)?.[0] ?? '';
+        const item = modal.locator('li.category-item').filter({ hasText: city });
+        await item.locator('button.arrow').click();
+
         // 再選擇新的地區
         await modal.getByText(value, { exact: true }).click();
 
-        await modal.locator('button', {
-            hasText: '確定'
-        }).click();
-        /*
-        const btnLen = await btn.count();
-
-        await modal.getByRole('button', {
-            name: '確定', exact: true
-        }).click();
-        */
+        await modal.locator('button', { hasText: '確定' }).click();
     }
 
     private async setSelect2A(field:Locator, value:string): Promise<void>{
@@ -129,7 +120,6 @@ export default class Write104 extends BaseWrite {
             })
         });
         
-
         if (await row.count() == 0) {
             //新增, 移動到新增空白職務url
             await this.page!.goto('https://vip.104.com.tw/job/jobinsert?act=new');

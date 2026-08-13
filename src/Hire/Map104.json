@@ -3,7 +3,7 @@
     "srcFid": "roleId",
     "label": "職務性質",
     "type": "radio",
-    "filter": "input[name='roleId']"
+    "filter": "div[name='roleId']"
   },
   {
     "srcFid": "jobName",
@@ -76,13 +76,13 @@
     "filter": "input[name='calcRemoteWork']"
   },
   {
-    "srcFid": "remoteWorkOption",
+    "srcFid": "_remoteWorkOption",
     "label": "遠端工作-完全遠端",
     "type": "radio",
-    "filter": "input[name='remoteWorkOption']"
+    "filter": "div[name='remoteWorkOption']"
   },
   {
-    "srcFid": "freeKeyRemoteDescription",
+    "srcFid": "_freeKeyRemoteDescription",
     "label": "遠端工作-說明",
     "filter": "input[name='freeKeyRemoteDescription']"
   },
@@ -95,7 +95,7 @@
     "srcFid": "manage",
     "label": "管理責任",
     "type": "radio",
-    "filter": "input[name='manage']"
+    "filter": "div[name='manage']"
   },
   {
     "srcFid": "businessTrip",
@@ -113,13 +113,13 @@
     "srcFid": "holiday",
     "label": "休假制度",
     "type": "radio",
-    "filter": "input[name='holiday']"
+    "filter": "div[name='holiday']"
   },
   {
     "srcFid": "onboardDate",
     "label": "可上班日",
     "type": "radio",
-    "filter": "input[name='onboardDate']"
+    "filter": "div[name='onboardDate']"
   },
   {
     "srcFid": "graduate",

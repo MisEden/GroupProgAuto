@@ -16,6 +16,7 @@ export default class _Input {
     }
 
     static async setOA(obj: Locator, value: InputValue) {
+        await obj.fill('', { force: true });    //先清除
         await obj.fill(value == null ? '' : String(value), { force: true });
         /*
         const info = await obj.evaluate(elm => {

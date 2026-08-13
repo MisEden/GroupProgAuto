@@ -29,12 +29,16 @@ export default abstract class BaseWrite {
 
     //抽象方法，子類別必須實作
     //abstract fnInit(): void;
+    //登入
     abstract fnLoginA(): Promise<boolean>;
-    abstract fnSetRadioA(box:Locator, fid:string, value: string): Promise<void>;
+    //設定欄位
+    abstract fnSetRadioA(field:Locator, value: string): Promise<void>;
     abstract fnSetCheckA(field:Locator, status:boolean): Promise<void>;
     abstract fnSetSelectA(field:Locator, text:string): Promise<void>;
     abstract fnSetCustomA(fid:string, field:Locator, text:string): Promise<void>;
+    //切換到新增或編輯畫面
     abstract fnToEditFormA(jobName:string): Promise<boolean>;
+    //點擊Save
     abstract fnClickSaveA(): Promise<boolean>;
 
     constructor(idx:number, compCode: string, page: Page, config: Json) {
@@ -70,6 +74,8 @@ export default abstract class BaseWrite {
                 errors.push(`fnToEditFormA failed: ${row.jobName}`);
                 continue;
             }
+
+            await this.page!.waitForTimeout(1000);
 
             //fill row
             //let errors:string[] = [];
@@ -144,8 +150,8 @@ export default abstract class BaseWrite {
             if (fid == null) continue;
 
             //for debug
-            if (fid == 'calcRemoteWork'){
-                debugger;
+            if (fid == 'holiday'){
+                //debugger;
             }
 
             if (fid.startsWith('_')){   
@@ -180,10 +186,12 @@ export default abstract class BaseWrite {
             } else {
                 //case ok
                 console.log(`fill ${fid}`);
+                //console.log('jobName= ' + await this.page!.locator('input[data-qa-id="jobName"]').inputValue());
+
                 if (map.type == InputTypeEstr.Radio){
                     //const fid2 = '_' + fid;
                     const label = this.getRadioLabel(row[fid]);
-                    await this.fnSetRadioA(box, fid, label);
+                    await this.fnSetRadioA(field, label);
                 } else if (map.type == InputTypeEstr.Check){
                     const status = _Input.toBoolean(row[fid]);
                     await this.fnSetCheckA(field, status);
@@ -194,7 +202,9 @@ export default abstract class BaseWrite {
                 } else {
                     try{
                         //console.log(`fill ${fid}`);
+                        //await field.waitFor({ state: 'attached' }); 
                         await _Input.setOA(field, row[fid]);
+                        //await this.page!.waitForTimeout(3000);
                     } catch (err: any) {
                         errors.push(`fill failed: ${err.message}`);
                         ok = false;
